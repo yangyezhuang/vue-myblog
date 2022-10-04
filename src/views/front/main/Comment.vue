@@ -10,12 +10,23 @@
         </el-col>
         <el-col :span="16">
           <div class="grid-content bg-purple">
-            <el-input type="text" style="float: right;" v-model="commentForm.comment"></el-input>
+            <el-input type="text" style="float: right;" :v-model="commentForm.comment"></el-input>
           </div>
         </el-col>
         <el-col :span="4">
           <div class="grid-content bg-purple">
-            <el-button @click="addComment">发表评论</el-button>
+            <!--            <el-button @click="addComment">发表评论</el-button>-->
+            <el-button @click="dialogVisible = true">发表评论</el-button>
+            <!--  验证码弹窗 -->
+            <el-dialog
+                title="请输入验证码"
+                :visible.sync="dialogVisible"
+                width="30%"
+                center>
+              <Verify @success="addComment" @error="this.$message.warning('验证码错误')" :type="2"></Verify>
+              <span slot="footer" class="dialog-footer">
+              </span>
+            </el-dialog>
           </div>
         </el-col>
       </el-row>
@@ -47,9 +58,12 @@
 </template>
 
 <script>
+import Verify from 'vue2-verify'
+
 export default {
   name: "Comment",
   props: ['article_id'],
+  components: {Verify},
   data() {
     return {
       uid: sessionStorage.getItem("uid"),
@@ -61,6 +75,13 @@ export default {
         uid: sessionStorage.getItem("uid"),
         article_id: this.$route.params.id,
         comment: ''
+      },
+      dialogVisible: false,
+      rules: {
+        name: [
+          {required: true, message: '请输入活动名称', trigger: 'blur'},
+          {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
+        ],
       }
     }
   },
@@ -86,16 +107,16 @@ export default {
 
     // 添加评论
     async addComment() {
-      // 判断是否登录
-      if (this.username) {
-        const {data: res} = await this.$http.post(`/comments`, this.commentForm)
-        if (res.code === 1) {
-          this.$message.success('发表成功')
-          this.getComments()
-        }
-      } else {
-        this.$message.info('请先登录')
+      const {data: res} = await this.$http.post(`/comments`, this.commentForm)
+      if (res.code === 1) {
+        this.$message.success('发表成功')
+        this.dialogVisible = false
+        this.getComments()
       }
+    },
+
+    alert(text) {
+      alert(text)
     }
   }
 }

@@ -15,22 +15,22 @@ import BreadCrumb from "../views/admin/other/BreadCrumb";
 import Login from "../views/admin/login/Login";
 import Welcome from "../views/admin/home/Welcome";
 import Home from "../views/admin/Home";
-import ArticleMg from "../views/admin/articeMg/ArticleList";
-import Push from "../views/admin/articeMg/Write";
-import Edit from "../views/admin/articeMg/Edit";
-import TagMg from "../views/admin/tagMg/TagMg";
+import ArticleMg from "../views/admin/artice/ArticleList";
+import Push from "../views/admin/artice/Write";
+import Edit from "../views/admin/artice/Edit";
+import TagMg from "../views/admin/tag/TagMg";
 import Setting from "../views/admin/setting/Setting";
-import UserList from "../views/admin/userMg/UserList";
+import UserList from "../views/admin/user/UserList";
 import Sex from '../views/admin/statistic/Sex'
-import CommentList from "../views/admin/commentMg/CommentList";
-import MessageList from "../views/admin/msgMg/MessageList";
-import NoticeList from "../views/admin/msgMg/NoticeList";
+import CommentList from "../views/admin/comment/CommentList";
+import MessageList from "../views/admin/msg/MessageList";
+import NoticeList from "../views/admin/msg/NoticeList";
 import CategoryMg from "../views/admin/category/CategoryMg";
 import TagPage from "../views/front/main/TagPage";
 import CategoryStatistic from "../views/admin/statistic/CategoryStatistic";
 import PvStatistic from "../views/admin/statistic/PvStatistic";
 import InfoCenter from "../views/admin/other/InfoCenter";
-import UpdateInfoDialog from "../views/admin/userMg/UpdateInfoDialog";
+import UpdateInfoDialog from "../views/admin/user/UpdateInfoDialog";
 
 const routes = [
     {

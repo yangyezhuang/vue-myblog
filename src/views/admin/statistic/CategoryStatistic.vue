@@ -2,7 +2,6 @@
   <div>
     <el-card>
       <div style="width: auto;height: 400px" id="main"></div>
-
     </el-card>
   </div>
 </template>

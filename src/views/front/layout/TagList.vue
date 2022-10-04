@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <!--  Tag模块  -->
-    <div style="width:100%;height:auto;float: left">
-      <el-tag class="taggg" style="margin-right: 10px;margin-bottom: 5px;" size="medium" v-for="tag in tagList"
-              :type="typeList[Math.floor((Math.random()*typeList.length))]"
-              @click="toTag(tag.tag)">
-        {{ tag.tag }}
-      </el-tag>
-    </div>
+  <!--  Tag模块  -->
+  <div style="width:100%;height:auto;float: left">
+    <el-tag class="taggg"
+            style="margin-right: 10px;margin-bottom: 5px;" size="medium"
+            v-for="tag in tagList"
+            :type="typeList[Math.floor((Math.random()*typeList.length))]"
+            @click="toTag(tag.tag)">
+      {{ tag.tag }}
+    </el-tag>
   </div>
 </template>
 
@@ -28,18 +28,13 @@ export default {
   methods: {
     toTag(tag) {
       this.$router.push(`/tag/${tag}`)
-      this.reloadAll()
-    },
-
-    reloadAll() {
-      this.timer = new Date().getTime()
+      location.reload()
     },
 
     async getTagList() {
       const {data: res} = await this.$http.get(`/tags/`);
       this.tagList = res.data
     }
-
   }
 }
 </script>

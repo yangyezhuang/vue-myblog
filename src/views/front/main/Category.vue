@@ -6,7 +6,8 @@
       <div style="width: 1000px;margin: 0 auto">
         <el-card style="height: auto;min-height: 650px">
           <!--   标签页头   -->
-          <el-menu class="el-menu-demo" mode="horizontal">
+          <el-menu class="el-menu-demo" mode="horizontal"
+                   :default-active="activeIndex" active-text-color="#9F85EC">
             <el-menu-item v-for="i in tags" @click="toCategory(i.title)">{{ i.title }}
             </el-menu-item>
           </el-menu>
@@ -43,6 +44,7 @@ export default {
   data() {
     return {
       timer: "",
+      activeIndex:'1',
       isRouterAlive: true,
       activeName: 'second',
       emptyShow: '',
@@ -75,5 +77,9 @@ export default {
 </script>
 
 <style scoped>
+.el-menu > .el-menu-item.is-active {
+  border-bottom: none;
+  text-decoration: none;
+}
 
 </style>

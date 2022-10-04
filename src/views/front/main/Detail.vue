@@ -56,6 +56,7 @@ import Header from "../layout/Header";
 import Footer from '../layout/Footer'
 import Comment from "./Comment";
 
+
 export default {
   name: "Detail",
   components: {
@@ -65,8 +66,6 @@ export default {
   },
   data() {
     return {
-      uid: sessionStorage.getItem("uid"),
-      username: sessionStorage.getItem('username'),
       article_id: this.$route.params.id,
       codeStyle: "atom-one-dark", //设置主题 ，
       detail: "",

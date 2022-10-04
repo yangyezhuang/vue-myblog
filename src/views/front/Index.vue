@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <Header></Header>
 
     <el-main>
@@ -12,7 +11,7 @@
       <!--      </el-carousel>-->
 
       <!--   横幅   -->
-      <div style="position: relative; width: 100%; height: 250px;">
+      <div style="position: relative; width: 100%; height: 250px;margin-bottom: 10px">
         <img src="../../assets/img/bg.svg" style="height: 100%; width: 100%">
         <span style="position: absolute; top: 10%; left: 40%;">
             <div>
@@ -70,7 +69,6 @@
     </el-main>
 
     <Footer></Footer>
-
   </div>
 </template>
 
@@ -96,13 +94,14 @@ export default {
         "https://proprogramming.org/wp-content/uploads/2017/05/mysql-5.7-features-768x418.png",
         "https://pic4.zhimg.com/v2-9bd4f62838d64b5072e6381c598b3cb9_b.jpg",
       ],
-      category: []
+      category: [],
     };
   },
 
   created() {
     this.getAllArticles()
     this.getAllCategory()
+
   },
 
   methods: {
@@ -139,14 +138,13 @@ export default {
 }
 
 
-.text:hover {
-  font-size: 14px;
-  /*float: left;*/
-  color: #9F85EC;
-}
-
 .bd:hover {
   transform: scale(1.1); /*鼠标放上之后元素变成1.1倍大小*/
+
+  .text {
+    font-size: 18px;
+    color: #9F85EC;
+  }
 }
 
 .box-card {
