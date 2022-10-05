@@ -2,11 +2,12 @@
   <div>
     <el-footer>
       <div class="footer">
-        <div>
-          <a href="http://localhost:8080/admin">后台管理</a>
-          <br>
-          <p>Copyright © 2022 Yang Yezhuang. All Rights Reserved.</p>
-        </div>
+
+                  <el-divider></el-divider>
+
+<!--        <a href="http://localhost:8080/admin">后台管理</a>-->
+
+        <p>Copyright © 2022 Yang Yezhuang. All Rights Reserved.</p>
       </div>
     </el-footer>
   </div>

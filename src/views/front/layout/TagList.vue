@@ -26,14 +26,14 @@ export default {
   },
 
   methods: {
-    toTag(tag) {
-      this.$router.push(`/tag/${tag}`)
-      location.reload()
-    },
-
     async getTagList() {
       const {data: res} = await this.$http.get(`/tags/`);
       this.tagList = res.data
+    },
+
+    toTag(tag) {
+      this.$router.push(`/tag/${tag}`)
+      location.reload()
     }
   }
 }

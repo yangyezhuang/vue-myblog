@@ -3,13 +3,6 @@
     <Header></Header>
 
     <el-main>
-      <!--      轮播图     -->
-      <!--      <el-carousel :interval="4000" height="250px" style="width: auto;margin: 0 auto;margin-bottom: 20px">-->
-      <!--        <el-carousel-item v-for="item in lunboImg" :key="item">-->
-      <!--          <img :src="item" style="width: 100%;height: 100%">-->
-      <!--        </el-carousel-item>-->
-      <!--      </el-carousel>-->
-
       <!--   横幅   -->
       <div style="position: relative; width: 100%; height: 250px;margin-bottom: 10px">
         <img src="../../assets/img/bg.svg" style="height: 100%; width: 100%">
@@ -24,7 +17,6 @@
             </div>
         </span>
       </div>
-
 
       <!--    下方整体  -->
       <div style="width: 1100px;margin: 0 auto">
@@ -43,7 +35,7 @@
               <p>杨业壮</p>
               <span style="margin-right: 20px">
                 <h2>{{ this.articles.length }} | {{ this.category.length }}</h2>
-                <span>Article &ensp;|&ensp; Category</span>
+                <span style="margin-left: 40px">Article &ensp;|&ensp; Category</span>
               </span>
             </div>
             <el-divider></el-divider>
@@ -101,7 +93,6 @@ export default {
   created() {
     this.getAllArticles()
     this.getAllCategory()
-
   },
 
   methods: {

@@ -4,13 +4,13 @@
       <el-row :gutter="20">
         <el-col :span="4">
           <div class="grid-content bg-purple">
-            <el-avatar
-                src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+            <el-avatar>user</el-avatar>
           </div>
         </el-col>
         <el-col :span="16">
           <div class="grid-content bg-purple">
-            <el-input type="text" style="float: right;" :v-model="commentForm.comment"></el-input>
+            <el-input type="text" style="float: right;"
+                      v-model="commentForm.comment"></el-input>
           </div>
         </el-col>
         <el-col :span="4">
@@ -37,7 +37,7 @@
         <el-row :gutter="20">
           <el-col :span="4">
             <div class="grid-content bg-purple">
-              <el-avatar slot="reference">{{ comment.uid }}</el-avatar>
+              <el-avatar slot="reference">user</el-avatar>
               <!--  <p>{{ comment.uid }}</p>-->
             </div>
           </el-col>
@@ -66,23 +66,15 @@ export default {
   components: {Verify},
   data() {
     return {
-      uid: sessionStorage.getItem("uid"),
-      username: sessionStorage.getItem('username'),
       article_id: '',
       commentList: '',
       commentForm: {
         id: '',
-        uid: sessionStorage.getItem("uid"),
+        uid: 111,
         article_id: this.$route.params.id,
         comment: ''
       },
       dialogVisible: false,
-      rules: {
-        name: [
-          {required: true, message: '请输入活动名称', trigger: 'blur'},
-          {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
-        ],
-      }
     }
   },
   watch: {
@@ -113,11 +105,8 @@ export default {
         this.dialogVisible = false
         this.getComments()
       }
-    },
-
-    alert(text) {
-      alert(text)
     }
+
   }
 }
 </script>

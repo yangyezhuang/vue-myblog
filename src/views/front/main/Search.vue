@@ -7,7 +7,7 @@
         <h2>与 “{{ keyword }}” 相关的文章</h2>
 
         <!-- 列表 -->
-        <article-list :keyword="keyword" :key="timer"></article-list>
+        <article-list :articles="articles"></article-list>
       </div>
     </el-main>
 
@@ -28,6 +28,19 @@ export default {
   data() {
     return {
       keyword: this.$route.params.keyword,
+      articles: ''
+    }
+  },
+
+  created() {
+    this.getArticles()
+  },
+
+  methods: {
+    // 根据keyword获取
+    async getArticles() {
+      const {data: res} = await this.$http.get(`/articles/search/${this.keyword}`)
+      this.articles = res.data
     }
   }
 }

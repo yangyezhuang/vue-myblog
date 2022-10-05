@@ -8,15 +8,13 @@
           <!--   标签页头   -->
           <el-menu class="el-menu-demo" mode="horizontal"
                    :default-active="activeIndex" active-text-color="#9F85EC">
-            <el-menu-item v-for="i in tags" @click="toCategory(i.title)">{{ i.title }}
+            <el-menu-item v-for="i in categories" @click="toCategory(i.title)">{{ i.title }}
             </el-menu-item>
           </el-menu>
 
           <!-- 列表 -->
-          <article-list :articles="articles" :key="timer"></article-list>
+          <article-list :articles="articles"></article-list>
 
-          <!--  空状态  -->
-          <el-empty v-show="emptyShow" description="暂无相关文章"></el-empty>
         </el-card>
       </div>
 
@@ -43,34 +41,46 @@ export default {
 
   data() {
     return {
-      timer: "",
-      activeIndex:'1',
+      activeIndex: '1',
       isRouterAlive: true,
       activeName: 'second',
-      emptyShow: '',
-      tags: '',
-      articles: ''
+      categories: '',
+      articles: '',
+      category: this.$route.params.category
     }
   },
 
   created() {
     this.getCategory()
+    if (this.$route.path === `/category/${this.category}`) {
+      this.getArticleByCategory(this.category)
+    } else {
+      this.getArticle()
+    }
   },
 
   methods: {
-    toCategory(category) {
-      this.$router.push(`/categories/${category}`)
-      this.reloadAll()
-    },
-
-    reloadAll() {
-      this.timer = new Date().getTime()
-    },
-
     // 获取 category
     async getCategory() {
       const {data: res} = await this.$http.get('/category/')
-      this.tags = res.data
+      this.categories = res.data
+    },
+
+    //
+    toCategory(category) {
+      this.$router.push(`/categories/${category}`)
+      this.getArticleByCategory(category)
+    },
+
+    async getArticle() {
+      const {data: res} = await this.$http.get(`/articles/`)
+      this.articles = res.data
+    },
+
+    // 根据分类获取文章
+    async getArticleByCategory(category) {
+      const {data: res} = await this.$http.get(`/category/${category}`)
+      this.articles = res.data
     }
   }
 }

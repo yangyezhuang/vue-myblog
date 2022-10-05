@@ -14,10 +14,8 @@ export default {
 html, body {
   margin: 0;
   padding: 0;
-  /*background-color: #99CCCC;*/
   background-color: #FFFFFF;
   /*background-image: url("./assets/img/bc.jpg") ;*/
-
   background-size: 100% 100%;
 }
 
@@ -38,9 +36,6 @@ html, body {
 }
 
 /*隐藏滚动条*/
-::-webkit-scrollbar {
-  width: 0 !important;
-}
 ::-webkit-scrollbar {
   width: 0 !important;
   height: 0;
